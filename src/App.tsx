@@ -14,6 +14,8 @@ const styles: { [key in string]: CSSProperties } = {
     maxWidth: 1440,
     margin: 'auto',
     width: '100%',
+    paddingBlock: 24,
+    paddingInline: 24,
   },
 };
 
