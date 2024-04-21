@@ -1,15 +1,18 @@
-import { Flex, Image, Typography } from 'antd';
+import { Col, Flex, Image, Row, Typography } from 'antd';
 import GreetingImage from '../../assets/images/greeting-screen.png';
-import { CSSProperties } from 'react';
 
-const SERVICE_PROPS = [
-  'индивидуальное психологическое консультирование;',
-  'тренинги;',
-  'тематические лекции и беседы;',
-  'cоциально-психологическое анкетирование, тестирование и опросы.',
-];
+import { CSSProperties } from 'react';
+import { REASONS_TO_VISIT, SERVICE_PROPS } from './constants';
 
 const styles: { [key in string]: CSSProperties } = {
+  block: {
+    paddingBlock: 48,
+    paddingInline: 24,
+  },
+  title: {
+    textAlign: 'center',
+    marginBottom: 24,
+  },
   greetingBlock: {
     minHeight: 'calc(100vh - 200px)',
   },
@@ -26,41 +29,63 @@ const styles: { [key in string]: CSSProperties } = {
 
 const HomePage = () => {
   return (
-    <Flex style={styles.greetingBlock} wrap="wrap">
-      <Flex vertical flex={14} justify="space-between" style={{ minWidth: '50%' }}>
-        <Flex vertical gap={20}>
-          <Typography.Title level={5}>СЛУЖБА ПСИХОЛОГИЧЕСКОЙ ПОМОЩИ</Typography.Title>
+    <div>
+      <div style={styles.block}>
+        <Flex style={styles.greetingBlock} wrap="wrap">
+          <Flex vertical flex={14} justify="space-between" style={{ minWidth: '50%' }}>
+            <Flex vertical gap={20}>
+              <Typography.Title level={5}>СЛУЖБА ПСИХОЛОГИЧЕСКОЙ ПОМОЩИ</Typography.Title>
 
-          <Typography.Title level={1} style={styles.greetingTitle}>
-            <span>
-              Профессиональная помощь
-              <br />
-              студентам и сотрудникам университета
-            </span>
-          </Typography.Title>
+              <Typography.Title level={1} style={styles.greetingTitle}>
+                <span>
+                  Профессиональная помощь
+                  <br />
+                  студентам и сотрудникам университета
+                </span>
+              </Typography.Title>
 
-          <div style={styles.greetingTitle}>
-            {SERVICE_PROPS.map((item) => (
-              <Typography.Paragraph>
-                <Flex gap={24}>
-                  <span>—</span>
-                  {item}
-                </Flex>
-              </Typography.Paragraph>
-            ))}
-          </div>
+              <div style={styles.greetingTitle}>
+                {SERVICE_PROPS.map((item) => (
+                  <Typography.Paragraph>
+                    <Flex gap={24}>
+                      <span>—</span>
+                      {item}
+                    </Flex>
+                  </Typography.Paragraph>
+                ))}
+              </div>
+            </Flex>
+
+            <Typography.Paragraph strong>
+              Важно! Консультации проходят в очном и онлайн режиме, бесплатны и конфиденциальны.
+            </Typography.Paragraph>
+          </Flex>
+          <Flex vertical flex={10} justify="space-between" style={{ alignSelf: 'end' }}>
+            <div style={styles.greetingImageWrapper}>
+              <Image src={GreetingImage} preview={false} height={'100%'} />
+            </div>
+          </Flex>
         </Flex>
+      </div>
 
-        <Typography.Paragraph strong>
-          Важно! Консультации проходят в очном и онлайн режиме, бесплатны и конфиденциальны.
-        </Typography.Paragraph>
-      </Flex>
-      <Flex vertical flex={10} justify="space-between" style={{ alignSelf: 'end' }}>
-        <div style={styles.greetingImageWrapper}>
-          <Image src={GreetingImage} preview={false} height={'100%'} />
-        </div>
-      </Flex>
-    </Flex>
+      <div style={styles.block}>
+        <Typography.Title level={3} style={styles.title}>
+          С чем может помочь психолог?
+        </Typography.Title>
+        <Row>
+          {REASONS_TO_VISIT.map((item) => (
+            <Col xs={12} xl={8}>
+              <Flex vertical align="center">
+                <Image src={item.image} preview={false} height={'100%'} />
+                <Typography.Text strong style={{ textAlign: 'center' }}>
+                  {item.title}
+                </Typography.Text>
+              </Flex>
+            </Col>
+          ))}
+        </Row>
+      </div>
+    </div>
   );
 };
 
