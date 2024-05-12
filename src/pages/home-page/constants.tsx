@@ -1,12 +1,13 @@
-import ConcentrationImage from '../../assets/images/reasons/reason_concentration.png';
-import FindingYourselfImage from '../../assets/images/reasons/reason_finding-yourself.png';
-import ProblemSolvingImage from '../../assets/images/reasons/reason_problem-solving.png';
-import MoodSwingsImage from '../../assets/images/reasons/reason_mood-swings.png';
-import SelfetimateImage from '../../assets/images/reasons/reason_selfetimate.png';
-import StressReductionImage from '../../assets/images/reasons/reason_stress-reduction.png';
-import DegreeImage from '../../assets/images/features/feature_degree.png';
-import FormatImage from '../../assets/images/features/feature_format.png';
-import TimeImage from '../../assets/images/features/feature_time.png';
+import ConcentrationImage from '../../assets/images/main/reasons/reason_concentration.png';
+import FindingYourselfImage from '../../assets/images/main/reasons/reason_finding-yourself.png';
+import ProblemSolvingImage from '../../assets/images/main/reasons/reason_problem-solving.png';
+import MoodSwingsImage from '../../assets/images/main/reasons/reason_mood-swings.png';
+import SelfetimateImage from '../../assets/images/main/reasons/reason_selfetimate.png';
+import StressReductionImage from '../../assets/images/main/reasons/reason_stress-reduction.png';
+import DegreeImage from '../../assets/images/main/features/feature_degree.png';
+import FormatImage from '../../assets/images/main/features/feature_format.png';
+import TimeImage from '../../assets/images/main/features/feature_time.png';
+import RescheduleImage from '../../assets/images/main/features/feature_reschedule.png';
 
 export const SERVICE_PROPS = [
   'тренинги;',
@@ -39,5 +40,10 @@ export const FEATURES_OF_WORK = [
     title: 'Компетентые психологи',
     image: DegreeImage,
     desc: 'Все психологи службы обладают опытом работы и высшим образованием для оказания самой качественной поддержки',
+  },
+  {
+    title: 'Перенос или пропуск консультации',
+    image: RescheduleImage,
+    desc: 'В случае необходимости переноса консультации, необходимо как можно раньше сообщить об этом сотруднику СПП. Пропуск запланированной консультации без предупреждения не допускается',
   },
 ];

@@ -1,8 +1,8 @@
 import { CSSProperties } from 'react';
-import Ok from '../../../assets/images/footer/ok.svg';
-import Youtube from '../../../assets/images/footer/youtube.svg';
-import Vk from '../../../assets/images/footer/vk.svg';
-import Tg from '../../../assets/images/footer/tg.svg';
+import Ok from '../../../assets/images/main/footer/ok.svg';
+import Youtube from '../../../assets/images/main/footer/youtube.svg';
+import Vk from '../../../assets/images/main/footer/vk.svg';
+import Tg from '../../../assets/images/main/footer/tg.svg';
 
 const styles: { [key in string]: CSSProperties } = {
 	wrapper: {

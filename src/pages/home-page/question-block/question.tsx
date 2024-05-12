@@ -1,6 +1,6 @@
 import { useState, CSSProperties } from 'react';
-import buttonImage from '../../../assets/images/question/button.svg';
-import ActivebuttonImage from '../../../assets/images/question/active-button.svg';
+import buttonImage from '../../../assets/images/main/question/button.svg';
+import ActivebuttonImage from '../../../assets/images/main/question/active-button.svg';
 
 const Question = ({id, ask, answer }: {id: Number; ask: string; answer: string }) => {
 	
