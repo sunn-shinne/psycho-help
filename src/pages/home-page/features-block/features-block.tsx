@@ -4,8 +4,7 @@ import { CSSProperties } from 'react';
 
 const styles: { [key in string]: CSSProperties } = {
   featursBlock: {
-    paddingTop: 72,
-    paddingBottom: 48,
+    paddingTop: 24,
   },
   featureItem: {
     marginBottom: 24,
@@ -20,8 +19,8 @@ const FeaturesBlock = () => {
   return (
     <Row gutter={64} style={styles.featursBlock}>
       {FEATURES_OF_WORK.map((item) => (
-        <Col xs={24} xl={8} style={styles.featureItem}>
-          <Flex gap={14}>
+        <Col xs={24} xl={12} style={styles.featureItem}>
+          <Flex gap={16}>
             <div style={styles.featureImage}>
               <Image src={item.image} preview={false} />
             </div>
