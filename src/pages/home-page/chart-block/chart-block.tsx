@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import ClockImage from '../../../assets/images/chart/clock.svg';
+import ClockImage from '../../../assets/images/main/chart/clock.svg';
 
 const styles: { [key in string]: CSSProperties } = {
 	wrapper: {

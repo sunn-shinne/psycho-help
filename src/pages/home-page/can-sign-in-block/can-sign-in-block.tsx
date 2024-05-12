@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
-import HumanImage from '../../../assets/images/can-sign-in/human.svg';
-import PcImage from '../../../assets/images/can-sign-in/pc.svg';
+import HumanImage from '../../../assets/images/main/can-sign-in/human.svg';
+import PcImage from '../../../assets/images/main/can-sign-in/pc.svg';
 
 	const styles: { [key in string]: CSSProperties } = {
 	wrapper: {
