@@ -14,6 +14,11 @@ const styles: { [key in string]: CSSProperties } = {
     paddingBlock: 48,
     paddingInline: 24,
   },
+  contentWrapper: {
+    maxWidth: 1440,
+    margin: 'auto',
+    width: '100%',
+  },
   title: {
     textAlign: 'center',
     marginBottom: 24,
@@ -56,48 +61,69 @@ const HomePage = () => {
   return (
     <div>
       <div style={styles.block}>
-        <GreetingBlock />
+        <div style={styles.contentWrapper}>
+          <GreetingBlock />
+        </div>
       </div>
 
       <div style={styles.block}>
-        <Typography.Title level={3} style={styles.title}>
-          С чем может помочь психолог?
-        </Typography.Title>
-        <ReasonsBlock />
+        <div style={styles.contentWrapper}>
+          <Typography.Title level={3} style={styles.title}>
+            С чем может помочь психолог?
+          </Typography.Title>
+          <ReasonsBlock />
+        </div>
       </div>
 
       <div style={styles.block}>
-        <Typography.Title level={3} style={styles.title}>
-          Особенности работы службы:
-        </Typography.Title>
-        <FeaturesBlock />
+        <div style={styles.contentWrapper}>
+          <Typography.Title level={3} style={styles.title}>
+            Особенности работы службы:
+          </Typography.Title>
+          <FeaturesBlock />
+        </div>
       </div>
+
       <div style={styles.block}>
-        <Typography.Title level={3} style={styles.title}>
-          Записаться прямо сейчас:
-        </Typography.Title>
-        <SignInBlock />
+        <div style={styles.contentWrapper}>
+          <Typography.Title level={3} style={styles.title}>
+            Записаться прямо сейчас:
+          </Typography.Title>
+          <SignInBlock />
+        </div>
       </div>
+
       <div style={styles.block}>
-        <Typography.Title level={3} style={styles.title}>
-          Так же записатья на консультацию можно:
-        </Typography.Title>
-        <CanSignInBlock />
+        <div style={styles.contentWrapper}>
+          <Typography.Title level={3} style={styles.title}>
+            Так же записатья на консультацию можно:
+          </Typography.Title>
+          <CanSignInBlock />
+        </div>
       </div>
+
       <div style={styles.block}>
-        <Typography.Title level={3} style={styles.title}>
-          График работы:
-        </Typography.Title>
-        <ChartBlock />
+        <div style={styles.contentWrapper}>
+          <Typography.Title level={3} style={styles.title}>
+            График работы:
+          </Typography.Title>
+          <ChartBlock />
+        </div>
       </div>
+
       <div style={styles.block}>
-        <Typography.Title level={3} style={styles.title}>
-          Часто задаваемые вопросы:
-        </Typography.Title>
-        <QuestionList questions={questions} />
+        <div style={styles.contentWrapper}>
+          <Typography.Title level={3} style={styles.title}>
+            Часто задаваемые вопросы:
+          </Typography.Title>
+          <QuestionList questions={questions} />
+        </div>
       </div>
+
       <div style={{ ...styles.block, paddingBottom: 0 }}>
-        <Footer />
+        <div style={styles.contentWrapper}>
+          <Footer />
+        </div>
       </div>
     </div>
   );

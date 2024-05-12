@@ -10,11 +10,6 @@ const styles: { [key in string]: CSSProperties } = {
     minHeight: '100vh',
     width: '100vw',
   },
-  contentWrapper: {
-    maxWidth: 1440,
-    margin: 'auto',
-    width: '100%',
-  },
 };
 
 function App() {
@@ -22,11 +17,9 @@ function App() {
     <Layout style={styles.layout}>
       <Header />
       <Layout.Content>
-        <div style={styles.contentWrapper}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
       </Layout.Content>
     </Layout>
   );
