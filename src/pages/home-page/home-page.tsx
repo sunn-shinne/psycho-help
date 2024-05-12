@@ -8,11 +8,17 @@ import ChartBlock from './chart-block/chart-block';
 import QuestionList from './question-block/question-list';
 import Footer from './footer-block/footer-block';
 import SignInBlock from './sign-in-block/sign-in-block';
+import TherapistsBlock from './doctors-block/doctors-block';
 
 const styles: { [key in string]: CSSProperties } = {
   block: {
     paddingBlock: 48,
     paddingInline: 24,
+  },
+  blockBlue: {
+    paddingBlock: 12,
+    paddingInline: 24,
+    backgroundColor: '#D9E5FF',
   },
   contentWrapper: {
     maxWidth: 1440,
@@ -75,10 +81,19 @@ const HomePage = () => {
         </div>
       </div>
 
+      <div style={styles.blockBlue}>
+        <div style={styles.contentWrapper}>
+          <Typography.Title level={3} style={styles.title}>
+            Психологи службы
+          </Typography.Title>
+          <TherapistsBlock />
+        </div>
+      </div>
+
       <div style={styles.block}>
         <div style={styles.contentWrapper}>
           <Typography.Title level={3} style={styles.title}>
-            Особенности работы службы:
+            Особенности работы службы
           </Typography.Title>
           <FeaturesBlock />
         </div>
@@ -87,7 +102,7 @@ const HomePage = () => {
       <div style={styles.block}>
         <div style={styles.contentWrapper}>
           <Typography.Title level={3} style={styles.title}>
-            Записаться прямо сейчас:
+            Записаться прямо сейчас
           </Typography.Title>
           <SignInBlock />
         </div>
@@ -105,7 +120,7 @@ const HomePage = () => {
       <div style={styles.block}>
         <div style={styles.contentWrapper}>
           <Typography.Title level={3} style={styles.title}>
-            График работы:
+            График работы
           </Typography.Title>
           <ChartBlock />
         </div>
@@ -114,7 +129,7 @@ const HomePage = () => {
       <div style={styles.block}>
         <div style={styles.contentWrapper}>
           <Typography.Title level={3} style={styles.title}>
-            Часто задаваемые вопросы:
+            Часто задаваемые вопросы
           </Typography.Title>
           <QuestionList questions={questions} />
         </div>
