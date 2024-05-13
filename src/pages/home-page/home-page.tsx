@@ -10,6 +10,7 @@ import SignInBlock from './sign-in-block/sign-in-block';
 import TherapistsBlock from './doctors-block/doctors-block';
 import { questions } from './constants';
 
+
 const styles: { [key in string]: CSSProperties } = {
   block: {
     paddingBlock: 48,
@@ -32,6 +33,7 @@ const styles: { [key in string]: CSSProperties } = {
 };
 
 const HomePage = () => {
+
 
   return (
     <div>
@@ -102,6 +104,12 @@ const HomePage = () => {
           </Typography.Title>
           <QuestionList questions={questions} />
         </div>
+      </div>
+			<div style={styles.block}>
+        <Typography.Title level={3} style={styles.title}>
+          Часто задаваемые вопросы:
+        </Typography.Title>
+        <QuestionList questions = {questions}/>
       </div>
     </div>
   );
