@@ -5,12 +5,10 @@ import ActivebuttonImage from '../../../assets/images/main/question/active-butto
 const Question = ({id, ask, answer }: {id: Number; ask: string; answer: string }) => {
 	
 	const [isHovered, setIsHovered] = useState(false)
-	const [text, setText] = useState(ask)
-	const [isActive, setImage] = useState(false)
+	const [isActive, setActive] = useState(false)
 
 	function OnClick () {
-		setText((text) => (text === ask ? answer : ask));
-		setImage((isActive) => !isActive);
+		setActive((isActive) => !isActive);
 	}
 
 	const styles: { [key in string]: CSSProperties } = {
@@ -38,14 +36,15 @@ const Question = ({id, ask, answer }: {id: Number; ask: string; answer: string }
 		p: {
 			wordBreak: "break-word",
 			flexGrow: 1,
-			width: "100%"
+			width: "100%",
+			whiteSpace: 'pre-wrap',
 		}
 	}
 
 	return (
 		<div>
-			<div style={{...styles.wrapper,  marginTop: `${id === 1 ? "0" : "calc((1vh + 1vw) / 4)"}`}} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={OnClick}>
-				<p style={styles.p}>{text}</p>
+			<div style={{...styles.wrapper, marginTop: `${id === 1 ? "0" : "calc((1vh + 1vw) / 4)"}`}} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={OnClick}>
+				<p style={styles.p}>{ask}{isActive && <><br /> <br />{answer}</>}</p>
 				<div style={{...styles.button, backgroundImage: `url(${isActive ? ActivebuttonImage : buttonImage})`}}></div>
 			</div>
 		</div>

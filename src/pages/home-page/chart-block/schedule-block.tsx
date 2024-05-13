@@ -6,18 +6,6 @@ const styles: { [key in string]: CSSProperties } = {
 		position: "relative",
 		zIndex: 0,
 	},
-	wrapperBefore: {
-		content: "",
-		position: "absolute",
-		width: "200vw", 
-		height: "103%",
-		background: "rgb(217, 229, 255)",
-		zIndex: -1,
-		top: 0,
-		right: 0,
-		bottom: 0,
-		left: "-100vw",
-	},
 	textBlock: {
 		display: "flex",
 		alignItems: "center",
@@ -33,7 +21,6 @@ const ChartBlock = () => {
 	return (
 		<div>
 			<div className="wrapper" style={styles.wrapper}>
-				<span style={styles.wrapperBefore}/>
 				<div style={{display: "flex", justifyContent: "space-between",}}>
 					<div style={styles.textBlock}>
 						<h3 style={{marginRight: "calc((1vh + 1vw) / 2)"}}>—</h3>
