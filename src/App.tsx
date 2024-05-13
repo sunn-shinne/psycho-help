@@ -4,6 +4,11 @@ import { Layout } from 'antd';
 import HomePage from './pages/home-page/home-page';
 import Header from './components/header/header';
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+
 const styles: { [key in string]: CSSProperties } = {
   layout: {
     overflow: 'hidden',
