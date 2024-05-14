@@ -1,6 +1,6 @@
-import { Row, Col, Flex, Typography, Image } from 'antd';
-import { FEATURES_OF_WORK } from '../constants';
 import { CSSProperties } from 'react';
+import { Row, Col, Flex, Typography, Image } from 'antd';
+import { FEATURES_OF_WORK } from '../../constants';
 
 const styles: { [key in string]: CSSProperties } = {
   featursBlock: {

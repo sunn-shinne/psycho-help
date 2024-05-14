@@ -1,5 +1,5 @@
 import { Col, Flex, Image, Row, Typography } from 'antd';
-import { REASONS_TO_VISIT } from '../constants';
+import { REASONS_TO_VISIT } from '../../constants';
 
 const ReasonsBlock = () => {
   return (
