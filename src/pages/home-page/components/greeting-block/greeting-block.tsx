@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 import { Flex, Image, Typography } from 'antd';
-import GreetingImage from '../../../assets/images/greeting-screen.png';
-import { SERVICE_PROPS } from '../constants';
+import GreetingImage from '../../../../assets/images/greeting-screen.png';
+import { SERVICE_PROPS } from '../../constants';
 
 const styles: { [key in string]: CSSProperties } = {
   title: {

@@ -1,9 +1,9 @@
 import { CSSProperties } from 'react';
 import { Button, Col, Flex, Input, Radio, Row, Space } from 'antd';
-import Image1 from '../../../assets/images/main/sign-in/1.png';
-import Image2 from '../../../assets/images/main/sign-in/2.png';
-import Image3 from '../../../assets/images/main/sign-in/3.png';
-import Image4 from '../../../assets/images/main/sign-in/4.png';
+import Image1 from '../../../../assets/images/main/sign-in/1.png';
+import Image2 from '../../../../assets/images/main/sign-in/2.png';
+import Image3 from '../../../../assets/images/main/sign-in/3.png';
+import Image4 from '../../../../assets/images/main/sign-in/4.png';
 
 const styles: { [key in string]: CSSProperties } = {
   form: {

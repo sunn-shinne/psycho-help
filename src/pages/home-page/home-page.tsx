@@ -1,15 +1,14 @@
 import { CSSProperties } from 'react';
 import { Typography } from 'antd';
-import GreetingBlock from './greeting-block/greeting-block';
-import ReasonsBlock from './reasons-block/reasons-block';
-import FeaturesBlock from './features-block/features-block';
-import CanSignInBlock from './can-sign-in-block/can-sign-in-block';
-import ChartBlock from './chart-block/schedule-block';
-import QuestionList from './question-block/questions-list';
-import SignInBlock from './sign-in-block/sign-in-block';
-import TherapistsBlock from './doctors-block/doctors-block';
-import { questions } from './constants';
-
+import GreetingBlock from './components/greeting-block/greeting-block';
+import ReasonsBlock from './components/reasons-block/reasons-block';
+import FeaturesBlock from './components/features-block/features-block';
+import CanSignInBlock from './components/can-sign-in-block/can-sign-in-block';
+import ChartBlock from './components/chart-block/schedule-block';
+import QuestionsList from './components/question-block/questions-list';
+import SignInBlock from './components/sign-in-block/sign-in-block';
+import TherapistsBlock from './components/doctors-block/doctors-block';
+import { faq } from './constants';
 
 const styles: { [key in string]: CSSProperties } = {
   block: {
@@ -17,8 +16,7 @@ const styles: { [key in string]: CSSProperties } = {
     paddingInline: 24,
   },
   blockBlue: {
-    paddingBlock: 12,
-    paddingInline: 24,
+    padding: '12px 24px 24px',
     backgroundColor: '#D9E5FF',
   },
   contentWrapper: {
@@ -33,8 +31,6 @@ const styles: { [key in string]: CSSProperties } = {
 };
 
 const HomePage = () => {
-
-
   return (
     <div>
       <div style={styles.block}>
@@ -102,14 +98,8 @@ const HomePage = () => {
           <Typography.Title level={3} style={styles.title}>
             Часто задаваемые вопросы
           </Typography.Title>
-          <QuestionList questions={questions} />
+          <QuestionsList questions={faq} />
         </div>
-      </div>
-			<div style={styles.block}>
-        <Typography.Title level={3} style={styles.title}>
-          Часто задаваемые вопросы:
-        </Typography.Title>
-        <QuestionList questions = {questions}/>
       </div>
     </div>
   );

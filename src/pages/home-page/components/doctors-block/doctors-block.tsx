@@ -1,8 +1,8 @@
+import { CSSProperties, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Avatar, Flex, Space, Spin, Typography, message } from 'antd';
-import { CSSProperties, useState } from 'react';
-import { Pagination } from '../../../api/types';
-import { serviceApi } from '../../../api/service-api';
+import { Pagination } from '../../../../api/types';
+import { serviceApi } from '../../../../api/service-api';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination as SwiperPagination, Scrollbar, A11y } from 'swiper/modules';
 import dayjs from 'dayjs';
@@ -52,7 +52,9 @@ const TherapistsBlock = () => {
                     </div>
                     <Space direction="vertical">
                       <Typography.Title level={5}>{doctor.name}</Typography.Title>
-                      <Typography.Paragraph>{doctor.description}</Typography.Paragraph>
+                      <Typography.Paragraph ellipsis={{ rows: 4 }}>
+                        {doctor.description}
+                      </Typography.Paragraph>
                     </Space>
                   </Flex>
                 </div>
