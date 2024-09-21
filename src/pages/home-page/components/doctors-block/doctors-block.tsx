@@ -1,4 +1,4 @@
-import { CSSProperties, useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Avatar, Flex, Space, Spin, Typography, message } from 'antd';
 import { Pagination } from '../../../../api/types';
@@ -6,14 +6,13 @@ import { serviceApi } from '../../../../api/service-api';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination as SwiperPagination, Scrollbar, A11y } from 'swiper/modules';
 import dayjs from 'dayjs';
+import styled from 'styled-components';
 
-const styles: { [key in string]: CSSProperties } = {
-  doctorCard: {
-    borderRadius: 20,
-    padding: '28px 18px 21px',
-    backgroundColor: 'white',
-  },
-};
+const DoctorCard = styled.div`
+  border-radius: 20;
+  padding: 28px 18px 21px;
+  background-color: white;
+`;
 
 const TherapistsBlock = () => {
   const [params, setParams] = useState<Pagination>({ pageSize: 15, pageNo: 1 });
@@ -41,7 +40,7 @@ const TherapistsBlock = () => {
                 key={`${doctor.username}-${dayjs().format()}`}
                 style={{ height: '100%' }}
               >
-                <div style={styles.doctorCard}>
+                <DoctorCard>
                   <Flex vertical>
                     <div style={{ alignSelf: 'center' }}>
                       <Avatar
@@ -57,7 +56,7 @@ const TherapistsBlock = () => {
                       </Typography.Paragraph>
                     </Space>
                   </Flex>
-                </div>
+                </DoctorCard>
               </SwiperSlide>
             ))}
         </Swiper>

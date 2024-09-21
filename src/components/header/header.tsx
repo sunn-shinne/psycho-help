@@ -1,30 +1,13 @@
-import { CSSProperties } from 'react';
-import { Flex, Layout } from 'antd';
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
-
-const styles: { [key in string]: CSSProperties } = {
-  header: {
-    height: 100,
-    width: '100%',
-    margin: 'auto',
-    paddingBlock: 24,
-    backgroundColor: '#5E8BF4',
-    paddingInline: 0,
-  },
-  contentWrapper: {
-    maxWidth: 1440,
-    margin: 'auto',
-    width: '100%',
-  },
-};
+import * as St from './headerStyle';
 
 const Header = () => {
   return (
-    <Layout.Header style={styles.header}>
-      <Flex style={styles.contentWrapper} justify="space-between">
+    <St.StyledHeader>
+      <St.ContentWrapper>
         <Logo />
-      </Flex>
-    </Layout.Header>
+      </St.ContentWrapper>
+    </St.StyledHeader>
   );
 };
 

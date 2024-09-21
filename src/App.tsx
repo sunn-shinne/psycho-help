@@ -1,4 +1,3 @@
-import { CSSProperties } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import HomePage from './pages/home-page/home-page';
@@ -9,26 +8,25 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+import styled from 'styled-components';
 
-const styles: { [key in string]: CSSProperties } = {
-  layout: {
-    overflow: 'hidden',
-    minHeight: '100vh',
-    width: '100vw',
-  },
-};
+const LayoutStyle = styled(Layout)`
+  overflow: hidden;
+  min-height: 100vh;
+  width: 100vw;
+`;
 
 function App() {
   return (
-    <Layout style={styles.layout}>
+    <LayoutStyle>
       <Header />
       <Layout.Content>
         <Routes>
           <Route path="/" element={<HomePage />} />
         </Routes>
       </Layout.Content>
-			<Footer />
-    </Layout>
+      <Footer />
+    </LayoutStyle>
   );
 }
 

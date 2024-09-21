@@ -7,7 +7,7 @@ const ReasonsBlock = () => {
       {REASONS_TO_VISIT.map((item) => (
         <Col xs={12} xl={8}>
           <Flex vertical align="center">
-            <Image src={item.image} preview={false} height={'100%'} />
+            <Image src={item.image} preview={false} height={'100%'} alt="Иллюстрация с помощью" />
             <Typography.Text strong style={{ textAlign: 'center' }}>
               {item.title}
             </Typography.Text>
