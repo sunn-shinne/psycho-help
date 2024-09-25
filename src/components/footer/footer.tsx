@@ -1,8 +1,6 @@
-// import Ok from '../../../assets/images/main/footer/ok.svg';
-// import Youtube from '../../../assets/images/main/footer/youtube.svg';
 import VkIcon from '../../assets/images/main/footer/vk.svg';
 import TgIcon from '../../assets/images/main/footer/tg.svg';
-import * as St from './footerStyle';
+import * as St from './footer-style';
 
 const Footer = () => {
   return (

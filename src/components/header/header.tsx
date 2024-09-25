@@ -1,5 +1,5 @@
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
-import * as St from './headerStyle';
+import * as St from './header-style';
 
 const Header = () => {
   return (

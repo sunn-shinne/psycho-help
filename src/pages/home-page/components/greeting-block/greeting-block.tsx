@@ -3,11 +3,6 @@ import GreetingImage from '../../../../assets/images/greeting-screen.png';
 import { SERVICE_PROPS } from '../../constants';
 import styled from 'styled-components';
 
-// const Title = styled.span`
-//   text-align: center;
-//   margin-bottom: 24px;
-// `;
-
 const GreetingBlock = styled(Flex)`
   min-height: calc(100vh - 200px);
 `;

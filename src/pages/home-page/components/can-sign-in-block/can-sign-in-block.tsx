@@ -1,6 +1,6 @@
 import HumanImage from '../../../../assets/images/main/can-sign-in/human.svg';
 import PcImage from '../../../../assets/images/main/can-sign-in/pc.svg';
-import * as St from './can-sign-in-blockStyle';
+import * as St from './can-sign-in-block-style';
 
 const CanSignInBlock = () => {
   const renderTextBlock = (title: string, items: string[], imageSrc?: string) => (

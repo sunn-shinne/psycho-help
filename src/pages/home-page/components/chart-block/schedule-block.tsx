@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import ClockImage from '../../../../assets/images/main/chart/clock.svg';
-import * as St from './schedule-blockStyle';
+import * as St from './schedule-block-style';
 
 interface TextBlockProps {
   title: string;
