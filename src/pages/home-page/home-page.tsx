@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { FC } from 'react';
 import { Typography } from 'antd';
 import GreetingBlock from './components/greeting-block/greeting-block';
 import ReasonsBlock from './components/reasons-block/reasons-block';
@@ -9,98 +9,76 @@ import QuestionsList from './components/question-block/questions-list';
 import SignInBlock from './components/sign-in-block/sign-in-block';
 import TherapistsBlock from './components/doctors-block/doctors-block';
 import { faq } from './constants';
+import styled from 'styled-components';
 
-const styles: { [key in string]: CSSProperties } = {
-  block: {
-    paddingBlock: 48,
-    paddingInline: 24,
-  },
-  blockBlue: {
-    padding: '12px 24px 24px',
-    backgroundColor: '#D9E5FF',
-  },
-  contentWrapper: {
-    maxWidth: 1440,
-    margin: 'auto',
-    width: '100%',
-  },
-  title: {
-    textAlign: 'center',
-    marginBottom: 24,
-  },
-};
+const Block = styled.div`
+  padding-block: 48px;
+  padding-inline: 24px;
+`;
 
-const HomePage = () => {
+const BlockBlue = styled.div`
+  padding: 12px 24px 24px;
+  background: #d9e5ff;
+`;
+
+const ContentWrapper = styled.div`
+  max-width: 1440px;
+  margin: auto;
+  width: 100%;
+`;
+
+const Title = styled(Typography.Title)`
+  text-align: center;
+  margin-bottom: 24px;
+`;
+
+interface BlockWrapperProps {
+  component: FC<any>;
+  style: typeof Block | typeof BlockBlue;
+  title?: string;
+  props?: any;
+}
+
+const blocks: BlockWrapperProps[] = [
+  { component: GreetingBlock, style: Block },
+  { component: ReasonsBlock, style: Block, title: 'С чем может помочь психолог?' },
+  { component: TherapistsBlock, style: BlockBlue, title: 'Психологи службы' },
+  { component: FeaturesBlock, style: Block, title: 'Особенности работы службы' },
+  { component: SignInBlock, style: Block, title: 'Записаться прямо сейчас' },
+  { component: CanSignInBlock, style: Block, title: 'Так же записатья на консультацию можно:' },
+  { component: ChartBlock, style: BlockBlue, title: 'График работы' },
+  {
+    component: QuestionsList,
+    style: Block,
+    title: 'Часто задаваемые вопросы',
+    props: { questions: faq },
+  },
+];
+
+const BlockWrapper: FC<BlockWrapperProps> = ({
+  component: Component,
+  style: Style,
+  title,
+  props,
+}) => (
+  <Style>
+    <ContentWrapper>
+      {title && (
+        <Title level={2} style={{ fontSize: '24px' }}>
+          {title}
+        </Title>
+      )}
+      <Component {...props} />
+    </ContentWrapper>
+  </Style>
+);
+
+const HomePage: FC = () => {
   return (
     <div>
-      <div style={styles.block}>
-        <div style={styles.contentWrapper}>
-          <GreetingBlock />
-        </div>
-      </div>
-
-      <div style={styles.block}>
-        <div style={styles.contentWrapper}>
-          <Typography.Title level={3} style={styles.title}>
-            С чем может помочь психолог?
-          </Typography.Title>
-          <ReasonsBlock />
-        </div>
-      </div>
-
-      <div style={styles.blockBlue}>
-        <div style={styles.contentWrapper}>
-          <Typography.Title level={3} style={styles.title}>
-            Психологи службы
-          </Typography.Title>
-          <TherapistsBlock />
-        </div>
-      </div>
-
-      <div style={styles.block}>
-        <div style={styles.contentWrapper}>
-          <Typography.Title level={3} style={styles.title}>
-            Особенности работы службы
-          </Typography.Title>
-          <FeaturesBlock />
-        </div>
-      </div>
-
-      <div style={styles.block}>
-        <div style={styles.contentWrapper}>
-          <Typography.Title level={3} style={styles.title}>
-            Записаться прямо сейчас
-          </Typography.Title>
-          <SignInBlock />
-        </div>
-      </div>
-
-      <div style={styles.block}>
-        <div style={styles.contentWrapper}>
-          <Typography.Title level={3} style={styles.title}>
-            Так же записатья на консультацию можно:
-          </Typography.Title>
-          <CanSignInBlock />
-        </div>
-      </div>
-
-      <div style={styles.blockBlue}>
-        <div style={styles.contentWrapper}>
-          <Typography.Title level={3} style={styles.title}>
-            График работы
-          </Typography.Title>
-          <ChartBlock />
-        </div>
-      </div>
-
-      <div style={styles.block}>
-        <div style={styles.contentWrapper}>
-          <Typography.Title level={3} style={styles.title}>
-            Часто задаваемые вопросы
-          </Typography.Title>
-          <QuestionsList questions={faq} />
-        </div>
-      </div>
+      {blocks.map((block, index) => (
+        <BlockWrapper key={index} {...block} />
+      ))}
     </div>
   );
 };

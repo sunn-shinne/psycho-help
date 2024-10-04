@@ -1,13 +1,11 @@
-import { CSSProperties } from 'react';
 import Question from './question';
+import styled from 'styled-components';
 
-const styles: { [key in string]: CSSProperties } = {
-wrapper: {
-	borderRadius: "15px",
-	overflow: "hidden",
-	height: "auto"
-}
-}
+const Wrapper = styled.div`
+  border-radius: 15px;
+  overflow: hidden;
+  height: auto;
+`;
 
 const QuestionsList = ({
   questions,
@@ -15,7 +13,7 @@ const QuestionsList = ({
   questions: Array<{ id: number; ask: string; answer: string }>;
 }) => {
   return (
-    <div style={styles.wrapper}>
+    <Wrapper>
       {questions.map((questionObj) => (
         <Question
           ask={questionObj.ask}
@@ -24,7 +22,7 @@ const QuestionsList = ({
           key={questionObj.id}
         />
       ))}
-    </div>
+    </Wrapper>
   );
 };
 
