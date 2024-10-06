@@ -2,9 +2,10 @@ import Question from './question';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  border-radius: 15px;
+  border-radius: 0px;
   overflow: hidden;
   height: auto;
+	background: transparent;
 `;
 
 const QuestionsList = ({

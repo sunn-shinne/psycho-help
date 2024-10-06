@@ -5,9 +5,9 @@ import ReasonsBlock from './components/reasons-block/reasons-block';
 import FeaturesBlock from './components/features-block/features-block';
 import CanSignInBlock from './components/can-sign-in-block/can-sign-in-block';
 import ChartBlock from './components/chart-block/schedule-block';
-import QuestionsList from './components/question-block/questions-list';
 import SignInBlock from './components/sign-in-block/sign-in-block';
 import TherapistsBlock from './components/doctors-block/doctors-block';
+import FaqBlock from './components/faq-block/faq-block';
 import { faq } from './constants';
 import styled from 'styled-components';
 
@@ -47,12 +47,7 @@ const blocks: BlockWrapperProps[] = [
   { component: SignInBlock, style: Block, title: 'Записаться прямо сейчас' },
   { component: CanSignInBlock, style: Block, title: 'Так же записатья на консультацию можно:' },
   { component: ChartBlock, style: BlockBlue, title: 'График работы' },
-  {
-    component: QuestionsList,
-    style: Block,
-    title: 'Часто задаваемые вопросы',
-    props: { questions: faq },
-  },
+	{ component: FaqBlock, style: Block, props: { questions: faq } },
 ];
 
 const BlockWrapper: FC<BlockWrapperProps> = ({
