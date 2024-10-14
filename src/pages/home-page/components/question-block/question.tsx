@@ -3,7 +3,6 @@ import buttonImage from '../../../../assets/images/main/question/button.svg';
 import ActivebuttonImage from '../../../../assets/images/main/question/active-button.svg';
 
 const Question = ({ id, ask, answer }: { id: Number; ask: string; answer: string }) => {
-//  const [isHovered, setIsHovered] = useState(false);
   const [isActive, setActive] = useState(false);
 
   function OnClick() {
@@ -14,7 +13,6 @@ const Question = ({ id, ask, answer }: { id: Number; ask: string; answer: string
     wrapper: {
       width: '100%',
       height: 'auto',
-//    backgroundColor: isHovered ? 'rgb(240, 240, 240)' : '#FFFFFF',
       marginTop: `${id === 1 ? '0' : 'calc((1vh + 1vw) / 4)'}`,
       padding: '0 calc((1vh + 1vw) / 2)',
       cursor: 'pointer',
@@ -53,8 +51,6 @@ const Question = ({ id, ask, answer }: { id: Number; ask: string; answer: string
   return (
     <div
 			style={styles.wrapper}
-//		onMouseEnter={() => setIsHovered(true)}
-//		onMouseLeave={() => setIsHovered(false)}
 			onClick={OnClick}
 		>
       <div style={styles.ask}>
