@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   border-radius: 0px;
   overflow: hidden;
   height: auto;
-	background: transparent;
+  background: transparent;
 `;
 
 const QuestionsList = ({

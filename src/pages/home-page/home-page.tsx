@@ -47,7 +47,7 @@ const blocks: BlockWrapperProps[] = [
   { component: SignInBlock, style: Block, title: 'Записаться прямо сейчас' },
   { component: CanSignInBlock, style: Block, title: 'Так же записатья на консультацию можно:' },
   { component: ChartBlock, style: BlockBlue, title: 'График работы' },
-	{ component: FaqBlock, style: Block, props: { questions: faq } },
+  { component: FaqBlock, style: Block, props: { questions: faq } },
 ];
 
 const BlockWrapper: FC<BlockWrapperProps> = ({
