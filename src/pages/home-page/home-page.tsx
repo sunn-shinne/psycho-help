@@ -44,15 +44,7 @@ const blocks: BlockWrapperProps[] = [
   { component: ReasonsBlock, style: Block, title: 'С чем может помочь психолог?' },
   { component: TherapistsBlock, style: BlockBlue, title: 'Психологи службы' },
   { component: FeaturesBlock, style: Block, title: 'Особенности работы службы' },
-  { component: SignInBlock, style: Block, title: 'Записаться прямо сейчас' },
-  { component: CanSignInBlock, style: Block, title: 'Так же записатья на консультацию можно:' },
   { component: ChartBlock, style: BlockBlue, title: 'График работы' },
-  {
-    component: QuestionsList,
-    style: Block,
-    title: 'Часто задаваемые вопросы',
-    props: { questions: faq },
-  },
 ];
 
 const BlockWrapper: FC<BlockWrapperProps> = ({
