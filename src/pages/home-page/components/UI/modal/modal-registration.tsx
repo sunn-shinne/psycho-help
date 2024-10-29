@@ -1,0 +1,235 @@
+import React, { useState } from 'react';
+import { Button, Modal, Input } from 'antd';
+import InputMask from 'react-input-mask';
+import styled from 'styled-components';
+
+const ModalRegistration: React.FC = () => {
+  const [formValue, setFormValue] = useState({
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const [errors, setErrors] = useState({
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const validateFirstName = (name: string) =>
+    /^[a-zа-я]+$/i.test(name) ? '' : 'Имя не должно содержать цифр';
+
+  const validateLastName = (name: string) =>
+    /^[a-zа-я]+$/i.test(name) ? '' : 'Фамилия не должна содержать цифр';
+
+  const validatePhoneNumber = (phoneNumber: string) => {
+    const sanitizedNumber = phoneNumber.replace(/[^0-9+]/g, '');
+    return sanitizedNumber.length === 12 && sanitizedNumber.startsWith('+7')
+      ? ''
+      : 'Номер телефона должен быть в формате +79999999999';
+  };
+
+  const validateEmail = (email: string) =>
+    /^[\w-]+(\.[\w-]+)*@[\w-]+\.[a-z]{2,6}$/i.test(email)
+      ? ''
+      : 'Некорректный формат электронной почты';
+
+  const validatePassword = (password: string) => {
+    if (password.length < 8) {
+      return 'Пароль должен содержать не менее 8 символов';
+    }
+    if (!/[0-9]/.test(password)) {
+      return 'Пароль должен содержать хотя бы одну цифру';
+    }
+    if (!/[a-zA-Z]/.test(password)) {
+      return 'Пароль должен содержать хотя бы одну латинскую букву';
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      return 'Пароль должен содержать хотя бы один специальный символ';
+    }
+    if (/[^a-zA-Z0-9!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      return 'Пароль может содержать только латинские буквы, цифры и специальные символы';
+    }
+    return '';
+  };
+
+  const validateConfirmPassword = (confirmPassword: string) =>
+    confirmPassword === formValue.password ? '' : 'Пароли не совпадают';
+
+  const validateForm = () => {
+    const newErrors = {
+      firstName: validateFirstName(formValue.firstName),
+      lastName: validateLastName(formValue.lastName),
+      phoneNumber: validatePhoneNumber(formValue.phoneNumber),
+      email: validateEmail(formValue.email),
+      password: validatePassword(formValue.password),
+      confirmPassword: validateConfirmPassword(formValue.confirmPassword),
+    };
+    setErrors(newErrors);
+    return Object.values(newErrors).every((error) => error === '');
+  };
+
+  const handleOk = () => {
+    if (!validateForm()) return;
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      resetForm();
+      setOpen(false);
+    }, 1000);
+  };
+
+  const resetForm = () => {
+    setFormValue({
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    });
+    setErrors({
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    });
+  };
+
+  const handleCancel = () => setOpen(false);
+
+  const formComplete = Object.values(formValue).every((value) => value.trim() !== '');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormValue((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: '',
+    }));
+  };
+
+  return (
+    <>
+      <Button color="default" onClick={() => setOpen(true)}>
+        Зарегистрироваться
+      </Button>
+      <Modal
+        open={open}
+        title="Регистрация"
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={[
+          <Button
+            key="submit"
+            type="primary"
+            loading={loading}
+            onClick={handleOk}
+            disabled={!formComplete}
+          >
+            Зарегистрироваться
+          </Button>,
+        ]}
+      >
+        <Form>
+          <label>
+            <span>Ваше имя</span>
+            <Input
+              name="firstName"
+              value={formValue.firstName}
+              placeholder="Введите имя"
+              onChange={handleInputChange}
+            />
+            {errors.firstName && <ErrorText>{errors.firstName}</ErrorText>}
+          </label>
+          <label>
+            <span>Ваша фамилия</span>
+            <Input
+              name="lastName"
+              value={formValue.lastName}
+              placeholder="Введите фамилию"
+              onChange={handleInputChange}
+            />
+            {errors.lastName && <ErrorText>{errors.lastName}</ErrorText>}
+          </label>
+          <label>
+            <span>Номер телефона</span>
+            <InputMask
+              name="phoneNumber"
+              value={formValue.phoneNumber}
+              mask="+79999999999"
+              onChange={handleInputChange}
+            >
+              {<Input type="tel" placeholder="+79999999999" />}
+            </InputMask>
+            {errors.phoneNumber && <ErrorText>{errors.phoneNumber}</ErrorText>}
+          </label>
+          <label>
+            <span>Электронная почта</span>
+            <Input
+              name="email"
+              value={formValue.email}
+              placeholder="primer@gmail.com"
+              onChange={handleInputChange}
+            />
+            {errors.email && <ErrorText>{errors.email}</ErrorText>}
+          </label>
+          <label>
+            <span>Пароль</span>
+            <Input.Password
+              name="password"
+              value={formValue.password}
+              placeholder="Введите пароль"
+              onChange={handleInputChange}
+            />
+            {errors.password && <ErrorText>{errors.password}</ErrorText>}
+          </label>
+          <label>
+            <span>Повторите пароль</span>
+            <Input.Password
+              name="confirmPassword"
+              value={formValue.confirmPassword}
+              placeholder="Введите пароль ещё раз"
+              onChange={handleInputChange}
+            />
+            {errors.confirmPassword && <ErrorText>{errors.confirmPassword}</ErrorText>}
+          </label>
+          <p>
+            У вас уже есть учётная запись?
+            <a href="/">
+              <span> Войти</span>
+            </a>
+          </p>
+        </Form>
+      </Modal>
+    </>
+  );
+};
+
+const ErrorText = styled.span`
+  color: red;
+  font-size: 12px;
+`;
+
+export const Form = styled.form`
+  label {
+    margin-bottom: 10px;
+    display: block;
+  }
+`;
+
+export default ModalRegistration;
