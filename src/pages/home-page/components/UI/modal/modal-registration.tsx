@@ -95,9 +95,11 @@ const ModalRegistration: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    const filteredValue =
+      name === 'firstName' || name === 'lastName' ? value.replace(/[0-9\s]/g, '') : value;
     setFormValue((prevValues) => ({
       ...prevValues,
-      [name]: value,
+      [name]: filteredValue,
     }));
     setErrors((prevErrors) => ({
       ...prevErrors,
