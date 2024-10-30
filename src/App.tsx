@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import HomePage from './pages/home-page/home-page';
+import PersonalCabinet from './pages/personal-cabinet/personal-cabinet';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 
@@ -9,6 +10,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import styled from 'styled-components';
+import AppRouter from './components/router/AppRouter';
 
 const LayoutStyle = styled(Layout)`
   overflow: hidden;
@@ -21,9 +23,7 @@ function App() {
     <LayoutStyle>
       <Header />
       <Layout.Content>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-        </Routes>
+        <AppRouter />
       </Layout.Content>
       <Footer />
     </LayoutStyle>

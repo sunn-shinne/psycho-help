@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Typography } from 'antd';
 import GreetingBlock from './components/greeting-block/greeting-block';
 import ReasonsBlock from './components/reasons-block/reasons-block';
@@ -37,26 +38,27 @@ interface BlockWrapperProps {
   style: typeof Block | typeof BlockBlue;
   title?: string;
   props?: any;
+	name: string;
 }
 
 const blocks: BlockWrapperProps[] = [
-  { component: GreetingBlock, style: Block },
-  { component: ReasonsBlock, style: Block, title: 'С чем может помочь психолог?' },
-  { component: TherapistsBlock, style: BlockBlue, title: 'Психологи службы' },
-  { component: FeaturesBlock, style: Block, title: 'Особенности работы службы' },
-  { component: SignInBlock, style: Block, title: 'Записаться прямо сейчас' },
-  { component: CanSignInBlock, style: Block, title: 'Так же записатья на консультацию можно:' },
-  { component: ChartBlock, style: BlockBlue, title: 'График работы' },
-  { component: FaqBlock, style: Block, props: { questions: faq } },
+  { component: GreetingBlock, style: Block, name: "Greeting" },
+  { component: ReasonsBlock, style: Block, title: 'С чем может помочь психолог?', name: "reasons" },
+  { component: TherapistsBlock, style: BlockBlue, title: 'Психологи службы', name: "therapists" },
+  { component: FeaturesBlock, style: Block, title: 'Особенности работы службы', name: "features" },
+  { component: SignInBlock, style: Block, title: 'Записаться прямо сейчас', name: "signIn" },
+  { component: CanSignInBlock, style: Block, title: 'Так же записатья на консультацию можно:', name: "canSignIn" },
+  { component: ChartBlock, style: BlockBlue, title: 'График работы', name: "chart" },
+  { component: FaqBlock, style: Block, props: { questions: faq }, name: "faq" },
 ];
 
-const BlockWrapper: FC<BlockWrapperProps> = ({
+const BlockWrapper = React.forwardRef<BlockWrapperProps, any>(({
   component: Component,
   style: Style,
   title,
   props,
-}) => (
-  <Style>
+}, ref) => (
+  <Style ref={ref}>
     <ContentWrapper>
       {title && (
         <Title level={2} style={{ fontSize: '24px' }}>
@@ -66,13 +68,35 @@ const BlockWrapper: FC<BlockWrapperProps> = ({
       <Component {...props} />
     </ContentWrapper>
   </Style>
-);
+));
 
 const HomePage: FC = () => {
+
+	const refs = useRef<any[]>(blocks.map(() => null));
+
+	const location = useLocation();
+
+	useEffect(() => {
+		if (location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
+    if (location.hash) {
+      const targetRefIndex = blocks.findIndex(
+        (block) => `#${block.name}` === location.hash
+      );
+
+      if (targetRefIndex !== -1 && refs.current[targetRefIndex]) {
+        refs.current[targetRefIndex]?.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
+
   return (
     <div>
       {blocks.map((block, index) => (
-        <BlockWrapper key={index} {...block} />
+        <BlockWrapper key={index} {...block} ref={(el) => (refs.current[index] = el)} />
       ))}
     </div>
   );
