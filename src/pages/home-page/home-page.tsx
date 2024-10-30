@@ -56,7 +56,7 @@ const BlockWrapper: FC<BlockWrapperProps> = ({
   <Style>
     <ContentWrapper>
       {title && (
-        <Title level={2} style={{ fontSize: '24px' }}>
+        <Title level={2} style={{ fontSize: '28px' }}>
           {title}
         </Title>
       )}
