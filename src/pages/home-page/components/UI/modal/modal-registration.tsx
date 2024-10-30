@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Button, Modal, Input } from 'antd';
 import InputMask from 'react-input-mask';
-import styled from 'styled-components';
+import { ErrorText, Form } from '../../../../../global-styles';
+
+const INITIAL_FORM_VALUE = {
+  firstName: '',
+  lastName: '',
+  phoneNumber: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
 
 const ModalRegistration: React.FC = () => {
-  const [formValue, setFormValue] = useState({
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
+  const [formValue, setFormValue] = useState({ ...INITIAL_FORM_VALUE });
+  const [errors, setErrors] = useState({ ...INITIAL_FORM_VALUE });
 
-  const [errors, setErrors] = useState({
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
+  const resetForm = () => {
+    setFormValue({ ...INITIAL_FORM_VALUE });
+    setErrors({ ...INITIAL_FORM_VALUE });
+  };
 
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -88,28 +87,11 @@ const ModalRegistration: React.FC = () => {
     }, 1000);
   };
 
-  const resetForm = () => {
-    setFormValue({
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    });
-    setErrors({
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    });
-  };
-
   const handleCancel = () => setOpen(false);
 
-  const formComplete = Object.values(formValue).every((value) => value.trim() !== '');
+  const formComplete = useMemo(() => {
+    return Object.values(formValue).every((value) => value.trim() !== '');
+  }, [formValue]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -219,17 +201,5 @@ const ModalRegistration: React.FC = () => {
     </>
   );
 };
-
-const ErrorText = styled.span`
-  color: red;
-  font-size: 12px;
-`;
-
-export const Form = styled.form`
-  label {
-    margin-bottom: 10px;
-    display: block;
-  }
-`;
 
 export default ModalRegistration;

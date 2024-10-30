@@ -7,7 +7,7 @@ const Header = () => {
     <St.StyledHeader>
       <St.ContentWrapper>
         <Logo />
-        <ModalRegistration></ModalRegistration>
+        <ModalRegistration />
       </St.ContentWrapper>
     </St.StyledHeader>
   );
