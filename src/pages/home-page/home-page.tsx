@@ -3,12 +3,8 @@ import { Typography } from 'antd';
 import GreetingBlock from './components/greeting-block/greeting-block';
 import ReasonsBlock from './components/reasons-block/reasons-block';
 import FeaturesBlock from './components/features-block/features-block';
-import CanSignInBlock from './components/can-sign-in-block/can-sign-in-block';
 import ChartBlock from './components/chart-block/schedule-block';
-import QuestionsList from './components/question-block/questions-list';
-import SignInBlock from './components/sign-in-block/sign-in-block';
 import TherapistsBlock from './components/doctors-block/doctors-block';
-import { faq } from './constants';
 import styled from 'styled-components';
 
 const Block = styled.div`
