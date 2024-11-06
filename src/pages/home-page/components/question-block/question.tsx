@@ -3,7 +3,6 @@ import buttonImage from '../../../../assets/images/main/question/button.svg';
 import ActivebuttonImage from '../../../../assets/images/main/question/active-button.svg';
 
 const Question = ({ id, ask, answer }: { id: Number; ask: string; answer: string }) => {
-  const [isHovered, setIsHovered] = useState(false);
   const [isActive, setActive] = useState(false);
 
   function OnClick() {
@@ -14,23 +13,32 @@ const Question = ({ id, ask, answer }: { id: Number; ask: string; answer: string
     wrapper: {
       width: '100%',
       height: 'auto',
+      marginTop: `${id === 1 ? '0' : 'calc((1vh + 1vw) / 4)'}`,
+      padding: '0 calc((1vh + 1vw) / 2)',
+      cursor: 'pointer',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    ask: {
+      width: '100%',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      backgroundColor: isHovered ? 'rgb(230, 230, 230)' : 'rgb(240, 240, 240)',
-      marginTop: 'calc((1vh + 1vw) / 4)',
-      padding: '0 calc((1vh + 1vw) / 2)',
-      cursor: 'pointer',
+      color: isActive ? '#5E8BF4' : 'black',
     },
     button: {
       borderRadius: '50%',
-      height: 30,
-      width: 30,
-      backgroundImage: `url(${buttonImage})`,
+      height: 34,
+      width: 34,
+      backgroundImage: `url(${isActive ? ActivebuttonImage : buttonImage})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
-      marginLeft: 'calc((1vh + 1vw) / 2)',
+      marginRight: 'calc((1vh + 1vw) / 2)',
+    },
+
+    answer: {
+      marginLeft: 'calc((1vh + 1vw) / 2 + 34px)',
     },
     p: {
       wordBreak: 'break-word',
@@ -41,30 +49,12 @@ const Question = ({ id, ask, answer }: { id: Number; ask: string; answer: string
   };
 
   return (
-    <div>
-      <div
-        style={{ ...styles.wrapper, marginTop: `${id === 1 ? '0' : 'calc((1vh + 1vw) / 4)'}` }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={OnClick}
-      >
-        <p style={styles.p}>
-          {ask}
-          {isActive && (
-            <>
-              <br /> <br />
-              {answer}
-            </>
-          )}
-        </p>
-
-        <div
-          style={{
-            ...styles.button,
-            backgroundImage: `url(${isActive ? ActivebuttonImage : buttonImage})`,
-          }}
-        ></div>
+    <div style={styles.wrapper} onClick={OnClick}>
+      <div style={styles.ask}>
+        <div style={styles.button}></div>
+        <p style={styles.p}>{ask}</p>
       </div>
+      {isActive && <p style={styles.answer}>{answer}</p>}
     </div>
   );
 };
