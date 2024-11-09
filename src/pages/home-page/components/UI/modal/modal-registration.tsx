@@ -194,9 +194,9 @@ const ModalRegistration: React.FC = () => {
           </label>
           <p>
             У вас уже есть учётная запись?
-            <button style={{outline: 'none', border: 'none', background: 'none'}}><a href="/">
+            <a href="/">
               <span> Войти</span>
-            </a></button>
+            </a>
           </p>
         </Form>
       </Modal>
