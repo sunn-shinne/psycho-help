@@ -108,7 +108,7 @@ const ModalLogin: React.FC = () => {
             </p>
           <p>
             У вас еще нет учетной записи?
-            <button style={{outline: 'none', border: 'none', background: 'none'}}><a href=""> Регистрация</a></button>
+            <a href=""><span>Регистрация</span></a>
           </p>
         </Form>
       </Modal>
