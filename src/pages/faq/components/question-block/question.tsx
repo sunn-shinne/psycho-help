@@ -1,8 +1,17 @@
-import { useState, CSSProperties } from 'react';
+import { useState, CSSProperties, FC } from 'react';
 import buttonImage from '../../../../assets/images/main/question/button.svg';
 import ActivebuttonImage from '../../../../assets/images/main/question/active-button.svg';
+import { Tquestion } from '../../constants';
 
-const Question = ({ id, ask, answer }: { id: Number; ask: string; answer: string }) => {
+const Question: FC<Tquestion> = ({
+  id,
+  ask,
+  answer,
+}: {
+  id: Number;
+  ask: string;
+  answer: string;
+}) => {
   const [isActive, setActive] = useState(false);
 
   function OnClick() {

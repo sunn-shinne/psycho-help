@@ -1,28 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  position: relative;
-  z-index: 0;
-`;
-
-export const SpaceBetween = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const TextBlock = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-export const Schedule = styled.p`
-  border: 1px black solid;
-  border-radius: 10px;
-  padding: calc((1vh + 1vw) / 2);
-`;
-
-export const ScheduleTitle = styled.h3`
-  margin-top: 0;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1450px;
 `;
 
 export const List = styled.ul`
@@ -30,21 +11,64 @@ export const List = styled.ul`
   padding: 0;
 `;
 
-export const ScheduleList = styled(List)`
-  margin-bottom: 0;
+export const centerSpan = styled.span`
+  display: flex;
+  justify-content: center;
 `;
 
-export const TextLine = styled.h3`
-  margin-right: calc((1vh + 1vw) / 2);
+export const SpaceBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
-export const TextLineHidden = styled.span`
-  margin-right: calc((1vh + 1vw) / 2);
-  visibility: hidden;
-  pointer-events: none;
+export const weekdaysWrapper = styled.div`
+  text-align: center;
 `;
 
-export const TextList = styled(List)``;
+export const weekdaysList = styled(SpaceBetween)`
+  list-style: none;
+  padding: 0px;
+  width: 1300px;
+  margin: 0 auto;
+`;
+
+export const weekdaysElement = styled.li`
+  width: 400px;
+  text-align: center;
+`;
+
+export const weekdaysName = styled.p`
+  font-size: 24px;
+  margin-bottom: 0px;
+`;
+
+export const weekdaysTime = styled.p`
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0px;
+`;
+
+export const boldSpan = styled.span`
+  font-weight: 600;
+`;
+
+export const weekdaysDinner = styled.p`
+  text-align: center;
+  margin-top: 0px;
+  border-top: 1px dashed #717785;
+  border-bottom: 1px dashed #717785;
+  padding: 15px 39px;
+  font-size: 24px;
+  width: 414px;auto
+`;
+export const TextBlock = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const TextList = styled(List)`
+  margin-left: 30px;
+`;
 
 export const ListBold = styled.span`
   font-weight: bold;

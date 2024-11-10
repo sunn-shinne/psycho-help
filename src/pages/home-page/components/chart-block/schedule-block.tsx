@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import ClockImage from '../../../../assets/images/main/chart/clock.svg';
+import lineVector from '../../../../assets/images/main/chart/line.svg';
 import * as St from './schedule-block-style';
 
 interface TextBlockProps {
@@ -31,7 +32,6 @@ const items: TextBlockProps[] = [
 
 const ItemsBlock: FC<TextBlockProps> = ({ title, info }) => (
   <St.TextBlock>
-    <St.TextLine>—</St.TextLine>
     <St.TextList>
       <li>{title}</li>
       <li>
@@ -44,22 +44,29 @@ const ItemsBlock: FC<TextBlockProps> = ({ title, info }) => (
 const ChartBlock: FC = () => {
   return (
     <St.Wrapper>
+      <St.weekdaysWrapper>
+        <St.weekdaysList>
+          <St.weekdaysElement>
+            <St.weekdaysName>Понедельник - Четверг</St.weekdaysName>
+            <St.weekdaysTime>9:30 - 18:30</St.weekdaysTime>
+          </St.weekdaysElement>
+          <St.weekdaysElement>
+            <St.weekdaysName>Пятница</St.weekdaysName>
+            <St.weekdaysTime>9:30 - 17:15</St.weekdaysTime>
+          </St.weekdaysElement>
+        </St.weekdaysList>
+        <St.centerSpan>
+          <St.weekdaysDinner>
+            <St.boldSpan>Обед:</St.boldSpan> 13:00 - 13:45
+          </St.weekdaysDinner>
+        </St.centerSpan>
+      </St.weekdaysWrapper>
       <St.SpaceBetween>
-        <St.TextBlock>
-          <St.TextLine>—</St.TextLine>
-          <St.Schedule>
-            <St.ScheduleTitle>Расписание:</St.ScheduleTitle>
-            <St.ScheduleList>
-              <li>понедельник - четверг 9:30-18:30</li>
-              <li>пятница 9:30-17:15 </li>
-              <li>перерыв на обед 13:00-13:45</li>
-            </St.ScheduleList>
-          </St.Schedule>
-        </St.TextBlock>
-        <img src={ClockImage} alt="Иллюстрация рядом с расписанием" />
+        <img src={lineVector} alt="line" />
+        <img src={ClockImage} alt="clock" />
+        <img src={lineVector} alt="line" />
       </St.SpaceBetween>
       <h3>
-        <St.TextLineHidden>—</St.TextLineHidden>
         <span>
           В выходные и праздничные дни, ночью, за срочной психологической помощью можно обратиться
           по следующим телефонам:

@@ -1,12 +1,10 @@
-import QuestionsList from '../question-block/questions-list';
-import FaqImage from '../../../../assets/images/main/faq/shrug_rafiki_1.svg';
+import QuestionsList from './components/question-block/questions-list';
+import FaqImage from '../../assets/images/main/faq/shrug_rafiki_1.svg';
 import * as St from './faq-block-style';
+import { FC } from 'react';
+import { faq } from './constants';
 
-const FaqBlock = ({
-  questions,
-}: {
-  questions: Array<{ id: number; ask: string; answer: string }>;
-}) => {
+const FaqBlock: FC = () => {
   return (
     <St.wrapper>
       <St.header>
@@ -21,7 +19,7 @@ const FaqBlock = ({
         <img src={FaqImage} alt="" />
       </St.header>
       <St.questions>
-        <QuestionsList questions={questions} />
+        <QuestionsList questions={faq} />
       </St.questions>
     </St.wrapper>
   );
