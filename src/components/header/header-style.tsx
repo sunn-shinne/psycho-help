@@ -28,3 +28,9 @@ export const a = styled.a`
   align-items: center;
   justify-content: center;
 `;
+
+export  const modalWrapper = styled.div`
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+`

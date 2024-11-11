@@ -2,6 +2,7 @@ import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import { ReactComponent as Bell } from '../../assets/images/header/bell.svg';
 import { ReactComponent as Profile } from '../../assets/images/header/profile.svg';
 import ModalRegistration from '../../pages/home-page/components/UI/modal/modal-registration';
+import ModalLogin from '../../pages/home-page/components/UI/modal/modal-login';
 import * as St from './header-style';
 const Header = () => {
   return (
@@ -21,7 +22,10 @@ const Header = () => {
         <St.a href="/cabinet">
           <Profile />
         </St.a>
-        <ModalRegistration />
+          <St.modalWrapper>
+            <ModalRegistration />
+            <ModalLogin />  
+          </St.modalWrapper>
       </St.ContentWrapper>
     </St.StyledHeader>
   );
