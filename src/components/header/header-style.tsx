@@ -17,3 +17,9 @@ export const ContentWrapper = styled.div`
   margin: auto;
   width: 100%;
 `;
+
+export  const modalWrapper = styled.div`
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+`
