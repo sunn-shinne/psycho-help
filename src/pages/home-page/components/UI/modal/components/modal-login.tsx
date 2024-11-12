@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 import { Button, Modal, Input, Checkbox } from 'antd';
-import { ErrorText, Form } from '../../../../../global-styles';
+import { ErrorText, Form } from '../../../../../../global-styles';
 
 const INITIAL_FORM_VALUE = {
   email: '',
   password: '',
 };
 
-const ModalLogin: React.FC = () => {
+type Tprops = {
+	setWindow: (param: string) => any;
+	isOpen: boolean;
+	setModalOpen: (param: boolean) => any;
+}
+
+const ModalLogin: React.FC<Tprops> = ( { setWindow, isOpen, setModalOpen } ) => {
+
   const [formValue, setFormValue] = useState({ ...INITIAL_FORM_VALUE });
   const [errors, setErrors] = useState({ ...INITIAL_FORM_VALUE });
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(isOpen);
   const [rememberMe, setRememberMe] = useState(false);
+
 
   const validateEmail = (email: string) =>
     /^[\w-]+(\.[\w-]+)*@[\w-]+\.[a-z]{2,6}$/i.test(email)
@@ -40,8 +48,10 @@ const ModalLogin: React.FC = () => {
     }, 1000);
   };
 
-  const handleCancel = () => setOpen(false);
-
+  const handleCancel = () => {
+		setOpen(false);
+		setModalOpen(false);
+	};
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValue((prevValues) => ({
@@ -56,9 +66,6 @@ const ModalLogin: React.FC = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
-        Войти
-      </Button>
       <Modal
         open={open}
         title="Вход"
@@ -108,8 +115,8 @@ const ModalLogin: React.FC = () => {
             </p>
           <p>
             У вас еще нет учетной записи?
-            <a href=""><span>Регистрация</span></a>
           </p>
+					<Button type='default' onClick={() => setWindow('reg')}><span>Регистрация</span></Button>
         </Form>
       </Modal>
     </>

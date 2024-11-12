@@ -1,9 +1,10 @@
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import { ReactComponent as Bell } from '../../assets/images/header/bell.svg';
 import { ReactComponent as Profile } from '../../assets/images/header/profile.svg';
-import ModalRegistration from '../../pages/home-page/components/UI/modal/modal-registration';
-import ModalLogin from '../../pages/home-page/components/UI/modal/modal-login';
+import ModalRegistration from '../../pages/home-page/components/UI/modal/components/modal-registration';
+import ModalLogin from '../../pages/home-page/components/UI/modal/components/modal-login';
 import * as St from './header-style';
+import ModalWindow from '../../pages/home-page/components/UI/modal/modal';
 const Header = () => {
   return (
     <St.StyledHeader>
@@ -22,10 +23,11 @@ const Header = () => {
         <St.a href="/cabinet">
           <Profile />
         </St.a>
-          <St.modalWrapper>
+				<ModalWindow />
+          {/* <St.modalWrapper>
             <ModalRegistration />
             <ModalLogin />  
-          </St.modalWrapper>
+          </St.modalWrapper> */}
       </St.ContentWrapper>
     </St.StyledHeader>
   );
