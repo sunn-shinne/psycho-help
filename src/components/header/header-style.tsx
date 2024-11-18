@@ -20,7 +20,7 @@ export const ContentWrapper = styled.div`
   width: 100%;
 `;
 
-export const a = styled.a`
+export const link = styled.a`
   text-decoration: none;
   color: white;
   font-weight: bold;

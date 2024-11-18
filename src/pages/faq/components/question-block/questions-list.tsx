@@ -10,7 +10,11 @@ const Wrapper = styled.div`
   background: transparent;
 `;
 
-const QuestionsList: FC<{ questions: Tquestion[] }> = ({ questions }) => {
+const QuestionsList = ({
+  questions,
+}: {
+  questions: Array<Tquestion>;
+}) => {
   return (
     <Wrapper>
       {questions.map((questionObj) => (

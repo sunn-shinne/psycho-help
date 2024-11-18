@@ -59,7 +59,7 @@ export const weekdaysDinner = styled.p`
   border-bottom: 1px dashed #717785;
   padding: 15px 39px;
   font-size: 24px;
-  width: 414px;auto
+  width: 414px;
 `;
 export const TextBlock = styled.div`
   display: flex;

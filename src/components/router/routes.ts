@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import HomePage from '../../pages/home-page/home-page';
 import PersonalCabinet from '../../pages/personal-cabinet/personal-cabinet';
-import { FAQ, HOME_PAGE, PERSONAL_CABINET } from '../../utils/route-constants';
 import FaqBlock from '../../pages/faq/faq-block';
 
 interface routePath {
@@ -9,21 +8,17 @@ interface routePath {
   Component: FC<any>;
 }
 
-export const userRoutes: routePath[] = [
+export const routes: routePath[] = [
   {
-    path: HOME_PAGE,
+    path: '/',
     Component: HomePage,
   },
   {
-    path: PERSONAL_CABINET,
+    path: '/cabinet',
     Component: PersonalCabinet,
   },
   {
-    path: FAQ,
+    path: '/faq',
     Component: FaqBlock,
   },
-];
-
-export const adminRoutes: routePath[] = [
-  // пути к админ страницам
 ];

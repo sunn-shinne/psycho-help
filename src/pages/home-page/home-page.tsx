@@ -35,6 +35,7 @@ interface BlockWrapperProps {
   title?: string;
   props?: any;
   name: string;
+	ref?: React.Ref<HTMLElement | null>;
 }
 
 const blocks: BlockWrapperProps[] = [
@@ -45,8 +46,8 @@ const blocks: BlockWrapperProps[] = [
   { component: ChartBlock, style: BlockBlue, title: 'График работы', name: 'chart' },
 ];
 
-const BlockWrapper = React.forwardRef<BlockWrapperProps, any>(
-  ({ component: Component, style: Style, title, props }, ref) => (
+const BlockWrapper = React.forwardRef<HTMLDivElement, BlockWrapperProps>(
+  ( { component: Component, style: Style, title, props}, ref ) => (
     <Style ref={ref}>
       <ContentWrapper>
         {title && (
@@ -61,7 +62,7 @@ const BlockWrapper = React.forwardRef<BlockWrapperProps, any>(
 );
 
 const HomePage: FC = () => {
-  const refs = useRef<any[]>(blocks.map(() => null));
+  const refs = useRef<HTMLDivElement[] | null[]>(blocks.map(() => null));
 
   const location = useLocation();
 

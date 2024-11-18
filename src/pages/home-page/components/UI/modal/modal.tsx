@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import * as St from './modal-style';
 import ModalLogin from "./components/modal-login";
 import ModalRegistration from "./components/modal-registration";
 import { Button } from 'antd';
@@ -19,12 +18,12 @@ const ModalWindow:FC = () => {
 	}
 
 	return (
-		<St.wrapper>
+		<div>
 			<Button type="primary" onClick={() => setModalOpen(!isModalOpen)}>
         Войти
       </Button>
 			{isModalOpen && render(modalWindow)}
-		</St.wrapper>
+		</div>
 	)
 }
 

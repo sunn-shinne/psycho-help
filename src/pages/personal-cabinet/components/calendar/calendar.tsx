@@ -3,7 +3,7 @@ import { Calendar, theme } from 'antd';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 
-const ACalendar: React.FC<{ getDate: any }> = ({ getDate }) => {
+const ACalendar: React.FC<{ getDate: (param: string) => void }> = ({ getDate }) => {
   const { token } = theme.useToken();
 
   const onChange = (value: Dayjs) => {
