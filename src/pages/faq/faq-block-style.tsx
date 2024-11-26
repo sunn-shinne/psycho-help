@@ -1,7 +1,12 @@
-
 import styled from 'styled-components';
 
-export const wrapper = styled.div``;
+export const wrapper = styled.div`
+  padding-block: 0 48px;
+  padding-inline: 24px;
+  max-width: 1440px;
+  margin: auto;
+  width: 100%;
+`;
 
 export const header = styled.div`
   display: flex;
@@ -15,7 +20,7 @@ export const header = styled.div`
     content: '';
     display: block;
     position: absolute;
-    top: -48px;
+    top: 0;
     left: 0;
     width: 200vw;
     height: calc(100% + 48px);

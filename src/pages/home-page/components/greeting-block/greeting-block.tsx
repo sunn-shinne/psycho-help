@@ -38,15 +38,25 @@ const GreatingBlock = () => {
           <GreetingTitle>
             {SERVICE_PROPS.map((item) => (
               <Typography.Paragraph>
-                <Flex gap={24} style={{fontSize: '18px'}}>
+                <Flex gap={24} style={{ fontSize: '18px' }}>
                   <span>—</span>
                   {item}
                 </Flex>
               </Typography.Paragraph>
             ))}
           </GreetingTitle>
-          <Button style={{ width: '30%', background: '#5e8bf4', fontStyle: 'bold', fontSize: '16px', borderRadius: '10px'}} type="primary" htmlType="submit">
-              Записаться
+          <Button
+            style={{
+              width: '30%',
+              background: '#5e8bf4',
+              fontStyle: 'bold',
+              fontSize: '16px',
+              borderRadius: '10px',
+            }}
+            type="primary"
+            htmlType="submit"
+          >
+            Записаться
           </Button>
         </Flex>
       </Flex>
@@ -59,7 +69,16 @@ const GreatingBlock = () => {
             alt="Иллюстрация на главной странице"
           />
         </GreetingImageWrapper>
-        <Typography.Paragraph style={{background: '#e8effd', padding: '10px', borderRadius: '10px', fontSize: '17px', fontWeight: 'bold', color: '#373535' }}>
+        <Typography.Paragraph
+          style={{
+            background: '#e8effd',
+            padding: '10px',
+            borderRadius: '10px',
+            fontSize: '17px',
+            fontWeight: 'bold',
+            color: '#373535',
+          }}
+        >
           <b>Важно!</b> Консультации проходят в очном и онлайн режиме, бесплатны и конфиденциальны.
         </Typography.Paragraph>
       </Flex>

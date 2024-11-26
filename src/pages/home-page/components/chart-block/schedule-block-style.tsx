@@ -14,7 +14,7 @@ export const List = styled.ul`
 export const centerSpan = styled.span`
   display: flex;
   justify-content: center;
-`
+`;
 
 export const SpaceBetween = styled.div`
   display: flex;
@@ -23,35 +23,34 @@ export const SpaceBetween = styled.div`
 
 export const weekdaysWrapper = styled.div`
   text-align: center;
-`
+`;
 
 export const weekdaysList = styled(SpaceBetween)`
   list-style: none;
   padding: 0px;
   width: 1300px;
   margin: 0 auto;
-`
+`;
 
 export const weekdaysElement = styled.li`
   width: 400px;
   text-align: center;
-`
-
+`;
 
 export const weekdaysName = styled.p`
   font-size: 24px;
   margin-bottom: 0px;
-`
+`;
 
 export const weekdaysTime = styled.p`
   font-size: 28px;
   font-weight: 600;
   margin: 0px;
-`
+`;
 
 export const boldSpan = styled.span`
   font-weight: 600;
-`
+`;
 
 export const weekdaysDinner = styled.p`
   text-align: center;
@@ -60,8 +59,8 @@ export const weekdaysDinner = styled.p`
   border-bottom: 1px dashed #717785;
   padding: 15px 39px;
   font-size: 24px;
-  width: 414px;auto
-`
+  width: 414px;
+`;
 export const TextBlock = styled.div`
   display: flex;
   align-items: center;

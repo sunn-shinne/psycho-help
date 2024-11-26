@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Typography } from 'antd';
 import GreetingBlock from './components/greeting-block/greeting-block';
 import ReasonsBlock from './components/reasons-block/reasons-block';
@@ -33,39 +34,56 @@ interface BlockWrapperProps {
   style: typeof Block | typeof BlockBlue;
   title?: string;
   props?: any;
+  name: string;
+	ref?: React.Ref<HTMLElement | null>;
 }
 
 const blocks: BlockWrapperProps[] = [
-  { component: GreetingBlock, style: Block },
-  { component: ReasonsBlock, style: Block, title: 'С чем может помочь психолог?' },
-  { component: TherapistsBlock, style: BlockBlue, title: 'Психологи службы' },
-  { component: FeaturesBlock, style: Block, title: 'Особенности работы службы' },
-  { component: ChartBlock, style: BlockBlue, title: 'График работы' },
+  { component: GreetingBlock, style: Block, name: 'Greeting' },
+  { component: ReasonsBlock, style: Block, title: 'С чем может помочь психолог?', name: 'reasons' },
+  { component: TherapistsBlock, style: BlockBlue, title: 'Психологи службы', name: 'therapists' },
+  { component: FeaturesBlock, style: Block, title: 'Особенности работы службы', name: 'features' },
+  { component: ChartBlock, style: BlockBlue, title: 'График работы', name: 'chart' },
 ];
 
-const BlockWrapper: FC<BlockWrapperProps> = ({
-  component: Component,
-  style: Style,
-  title,
-  props,
-}) => (
-  <Style>
-    <ContentWrapper>
-      {title && (
-        <Title level={2} style={{ fontSize: '28px' }}>
-          {title}
-        </Title>
-      )}
-      <Component {...props} />
-    </ContentWrapper>
-  </Style>
+const BlockWrapper = React.forwardRef<HTMLDivElement, BlockWrapperProps>(
+  ( { component: Component, style: Style, title, props}, ref ) => (
+    <Style ref={ref}>
+      <ContentWrapper>
+        {title && (
+          <Title level={2} style={{ fontSize: '24px' }}>
+            {title}
+          </Title>
+        )}
+        <Component {...props} />
+      </ContentWrapper>
+    </Style>
+  ),
 );
 
 const HomePage: FC = () => {
+  const refs = useRef<HTMLDivElement[] | null[]>(blocks.map(() => null));
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
+    if (location.hash) {
+      const targetRefIndex = blocks.findIndex((block) => `#${block.name}` === location.hash);
+
+      if (targetRefIndex !== -1 && refs.current[targetRefIndex]) {
+        refs.current[targetRefIndex]?.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
   return (
     <div>
       {blocks.map((block, index) => (
-        <BlockWrapper key={index} {...block} />
+        <BlockWrapper key={index} {...block} ref={(el) => (refs.current[index] = el)} />
       ))}
     </div>
   );

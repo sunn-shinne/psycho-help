@@ -45,23 +45,27 @@ const ChartBlock: FC = () => {
   return (
     <St.Wrapper>
       <St.weekdaysWrapper>
-          <St.weekdaysList>
-            <St.weekdaysElement>
-              <St.weekdaysName>Понедельник - Четверг</St.weekdaysName>
-              <St.weekdaysTime>9:30 - 18:30</St.weekdaysTime>
-            </St.weekdaysElement>
-            <St.weekdaysElement>
-              <St.weekdaysName>Пятница</St.weekdaysName>
-              <St.weekdaysTime>9:30 - 17:15</St.weekdaysTime>
-            </St.weekdaysElement>
-          </St.weekdaysList>
-          <St.centerSpan><St.weekdaysDinner><St.boldSpan>Обед:</St.boldSpan> 13:00 - 13:45</St.weekdaysDinner></St.centerSpan>
-        </St.weekdaysWrapper>
-        <St.SpaceBetween>
-          <img src= {lineVector} alt="line" />
-          <img src= {ClockImage} alt="clock" />
-          <img src= {lineVector} alt="line" />
-        </St.SpaceBetween>
+        <St.weekdaysList>
+          <St.weekdaysElement>
+            <St.weekdaysName>Понедельник - Четверг</St.weekdaysName>
+            <St.weekdaysTime>9:30 - 18:30</St.weekdaysTime>
+          </St.weekdaysElement>
+          <St.weekdaysElement>
+            <St.weekdaysName>Пятница</St.weekdaysName>
+            <St.weekdaysTime>9:30 - 17:15</St.weekdaysTime>
+          </St.weekdaysElement>
+        </St.weekdaysList>
+        <St.centerSpan>
+          <St.weekdaysDinner>
+            <St.boldSpan>Обед:</St.boldSpan> 13:00 - 13:45
+          </St.weekdaysDinner>
+        </St.centerSpan>
+      </St.weekdaysWrapper>
+      <St.SpaceBetween>
+        <img src={lineVector} alt="line" />
+        <img src={ClockImage} alt="clock" />
+        <img src={lineVector} alt="line" />
+      </St.SpaceBetween>
       <h3>
         <span>
           В выходные и праздничные дни, ночью, за срочной психологической помощью можно обратиться

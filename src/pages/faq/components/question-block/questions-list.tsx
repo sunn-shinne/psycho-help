@@ -1,5 +1,7 @@
+import { FC } from 'react';
 import Question from './question';
 import styled from 'styled-components';
+import { Tquestion } from '../../constants';
 
 const Wrapper = styled.div`
   border-radius: 0px;
@@ -11,7 +13,7 @@ const Wrapper = styled.div`
 const QuestionsList = ({
   questions,
 }: {
-  questions: Array<{ id: number; ask: string; answer: string }>;
+  questions: Array<Tquestion>;
 }) => {
   return (
     <Wrapper>

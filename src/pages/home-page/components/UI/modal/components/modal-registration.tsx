@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Button, Modal, Input } from 'antd';
 import InputMask from 'react-input-mask';
-import { ErrorText, Form } from '../../../../../global-styles';
+import { ErrorText, Form } from '../../../../../../global-styles';
 
 const INITIAL_FORM_VALUE = {
   firstName: '',
@@ -12,7 +12,13 @@ const INITIAL_FORM_VALUE = {
   confirmPassword: '',
 };
 
-const ModalRegistration: React.FC = () => {
+type Tprops = {
+	setWindow: (param: string) => any;
+	isOpen: boolean;
+	setModalOpen: (param: boolean) => any;
+}
+
+const ModalRegistration: React.FC<Tprops> = ( {setWindow, isOpen, setModalOpen} ) => {
   const [formValue, setFormValue] = useState({ ...INITIAL_FORM_VALUE });
   const [errors, setErrors] = useState({ ...INITIAL_FORM_VALUE });
 
@@ -22,7 +28,7 @@ const ModalRegistration: React.FC = () => {
   };
 
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(isOpen);
 
   const validateFirstName = (name: string) =>
     /^[a-zа-я]+$/i.test(name) ? '' : 'Имя не должно содержать цифр';
@@ -87,7 +93,10 @@ const ModalRegistration: React.FC = () => {
     }, 1000);
   };
 
-  const handleCancel = () => setOpen(false);
+  const handleCancel = () => {
+		setOpen(false);
+		setModalOpen(false);
+	};
 
   const formComplete = useMemo(() => {
     return Object.values(formValue).every((value) => value.trim() !== '');
@@ -109,9 +118,6 @@ const ModalRegistration: React.FC = () => {
 
   return (
     <>
-      <Button color="default" onClick={() => setOpen(true)}>
-        Зарегистрироваться
-      </Button>
       <Modal
         open={open}
         title="Регистрация"
@@ -194,10 +200,8 @@ const ModalRegistration: React.FC = () => {
           </label>
           <p>
             У вас уже есть учётная запись?
-            <a href="/">
-              <span> Войти</span>
-            </a>
           </p>
+					<Button type='default' onClick={() => setWindow('log')}><span> Войти</span></Button>
         </Form>
       </Modal>
     </>
