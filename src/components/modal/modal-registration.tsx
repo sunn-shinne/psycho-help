@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Button, Modal, Input } from 'antd';
 import InputMask from 'react-input-mask';
-import { ErrorText, Form } from '../../../../../../global-styles';
+import { ErrorText, Form } from '../../global-styles';
 
 const INITIAL_FORM_VALUE = {
   firstName: '',
@@ -13,12 +13,12 @@ const INITIAL_FORM_VALUE = {
 };
 
 type Tprops = {
-	setWindow: (param: string) => any;
-	isOpen: boolean;
-	setModalOpen: (param: boolean) => any;
-}
+  setWindow: (param: string) => any;
+  isOpen: boolean;
+  setModalOpen: (param: boolean) => any;
+};
 
-const ModalRegistration: React.FC<Tprops> = ( {setWindow, isOpen, setModalOpen} ) => {
+const ModalRegistration: React.FC<Tprops> = ({ setWindow, isOpen, setModalOpen }) => {
   const [formValue, setFormValue] = useState({ ...INITIAL_FORM_VALUE });
   const [errors, setErrors] = useState({ ...INITIAL_FORM_VALUE });
 
@@ -94,9 +94,9 @@ const ModalRegistration: React.FC<Tprops> = ( {setWindow, isOpen, setModalOpen} 
   };
 
   const handleCancel = () => {
-		setOpen(false);
-		setModalOpen(false);
-	};
+    setOpen(false);
+    setModalOpen(false);
+  };
 
   const formComplete = useMemo(() => {
     return Object.values(formValue).every((value) => value.trim() !== '');
@@ -198,10 +198,10 @@ const ModalRegistration: React.FC<Tprops> = ( {setWindow, isOpen, setModalOpen} 
             />
             {errors.confirmPassword && <ErrorText>{errors.confirmPassword}</ErrorText>}
           </label>
-          <p>
-            У вас уже есть учётная запись?
-          </p>
-					<Button type='default' onClick={() => setWindow('log')}><span> Войти</span></Button>
+          <p>У вас уже есть учётная запись?</p>
+          <Button type="default" onClick={() => setWindow('log')}>
+            <span> Войти</span>
+          </Button>
         </Form>
       </Modal>
     </>

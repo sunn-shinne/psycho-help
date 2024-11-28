@@ -41,7 +41,6 @@ interface BlockWrapperProps {
 const blocks: BlockWrapperProps[] = [
   { component: GreetingBlock, style: Block, name: 'Greeting' },
   { component: ReasonsBlock, style: Block, title: 'С чем может помочь психолог?', name: 'reasons' },
-  { component: TherapistsBlock, style: BlockBlue, title: 'Психологи службы', name: 'therapists' },
   { component: FeaturesBlock, style: Block, title: 'Особенности работы службы', name: 'features' },
   { component: ChartBlock, style: BlockBlue, title: 'График работы', name: 'chart' },
 ];

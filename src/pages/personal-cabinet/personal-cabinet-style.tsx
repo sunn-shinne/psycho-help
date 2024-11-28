@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const wrapper = styled.div`
   width: 100%;
+  max-width: 1440px;
+  margin: auto;
   display: flex;
   padding-block: 48px;
   padding-inline: 24px;

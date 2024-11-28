@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import HomePage from '../../pages/home-page/home-page';
 import PersonalCabinet from '../../pages/personal-cabinet/personal-cabinet';
-import FaqBlock from '../../pages/faq/faq-block';
+import FaqPage from '../../pages/faq-page/faq-page';
 
 interface routePath {
   path: string;
@@ -19,6 +19,6 @@ export const routes: routePath[] = [
   },
   {
     path: '/faq',
-    Component: FaqBlock,
+    Component: FaqPage,
   },
 ];

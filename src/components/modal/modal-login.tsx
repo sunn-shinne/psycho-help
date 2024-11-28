@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, Input, Checkbox } from 'antd';
-import { ErrorText, Form } from '../../../../../../global-styles';
+import { ErrorText, Form } from '../../global-styles';
 
 const INITIAL_FORM_VALUE = {
   email: '',
@@ -8,27 +8,24 @@ const INITIAL_FORM_VALUE = {
 };
 
 type Tprops = {
-	setWindow: (param: string) => any;
-	isOpen: boolean;
-	setModalOpen: (param: boolean) => any;
-}
+  setWindow: (param: string) => any;
+  isOpen: boolean;
+  setModalOpen: (param: boolean) => any;
+};
 
-const ModalLogin: React.FC<Tprops> = ( { setWindow, isOpen, setModalOpen } ) => {
-
+const ModalLogin: React.FC<Tprops> = ({ setWindow, isOpen, setModalOpen }) => {
   const [formValue, setFormValue] = useState({ ...INITIAL_FORM_VALUE });
   const [errors, setErrors] = useState({ ...INITIAL_FORM_VALUE });
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(isOpen);
   const [rememberMe, setRememberMe] = useState(false);
 
-
   const validateEmail = (email: string) =>
     /^[\w-]+(\.[\w-]+)*@[\w-]+\.[a-z]{2,6}$/i.test(email)
       ? ''
       : 'Некорректный формат электронной почты';
 
-  const validatePassword = (password: string) =>
-    password ? '' : 'Пароль не может быть пустым';
+  const validatePassword = (password: string) => (password ? '' : 'Пароль не может быть пустым');
 
   const validateForm = () => {
     const newErrors = {
@@ -49,9 +46,9 @@ const ModalLogin: React.FC<Tprops> = ( { setWindow, isOpen, setModalOpen } ) => 
   };
 
   const handleCancel = () => {
-		setOpen(false);
-		setModalOpen(false);
-	};
+    setOpen(false);
+    setModalOpen(false);
+  };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValue((prevValues) => ({
@@ -72,12 +69,7 @@ const ModalLogin: React.FC<Tprops> = ( { setWindow, isOpen, setModalOpen } ) => 
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[
-          <Button
-            key="submit"
-            type="primary"
-            loading={loading}
-            onClick={handleOk}
-          >
+          <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
             Войти
           </Button>,
         ]}
@@ -103,20 +95,20 @@ const ModalLogin: React.FC<Tprops> = ( { setWindow, isOpen, setModalOpen } ) => 
             />
             {errors.password && <ErrorText>{errors.password}</ErrorText>}
           </label>
-            <Checkbox
-                style={{display: 'flex'}}
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-            >
-                Запомнить меня
-            </Checkbox>
-            <p>
-                <a href="/forgot-password">Забыли пароль?</a>
-            </p>
+          <Checkbox
+            style={{ display: 'flex' }}
+            checked={rememberMe}
+            onChange={(e) => setRememberMe(e.target.checked)}
+          >
+            Запомнить меня
+          </Checkbox>
           <p>
-            У вас еще нет учетной записи?
+            <a href="/forgot-password">Забыли пароль?</a>
           </p>
-					<Button type='default' onClick={() => setWindow('reg')}><span>Регистрация</span></Button>
+          <p>У вас еще нет учетной записи?</p>
+          <Button type="default" onClick={() => setWindow('reg')}>
+            <span>Регистрация</span>
+          </Button>
         </Form>
       </Modal>
     </>
@@ -124,5 +116,3 @@ const ModalLogin: React.FC<Tprops> = ( { setWindow, isOpen, setModalOpen } ) => 
 };
 
 export default ModalLogin;
-
-

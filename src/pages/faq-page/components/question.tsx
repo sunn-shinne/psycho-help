@@ -1,9 +1,8 @@
-import { useState, CSSProperties, FC } from 'react';
-import buttonImage from '../../../../assets/images/main/question/button.svg';
-import ActivebuttonImage from '../../../../assets/images/main/question/active-button.svg';
-import { Tquestion } from '../../constants';
+import { useState, CSSProperties } from 'react';
+import buttonImage from '../../../assets/images/main/question/button.svg';
+import ActivebuttonImage from '../../../assets/images/main/question/active-button.svg';
 
-const Question: FC<Tquestion> = ( props ) => {
+const Question = ({ id, ask, answer }: { id: Number; ask: string; answer: string }) => {
   const [isActive, setActive] = useState(false);
 
   function OnClick() {
@@ -14,11 +13,12 @@ const Question: FC<Tquestion> = ( props ) => {
     wrapper: {
       width: '100%',
       height: 'auto',
-      marginTop: `${props.id === 1 ? '0' : 'calc((1vh + 1vw) / 4)'}`,
-      padding: '0 calc((1vh + 1vw) / 2)',
+      padding: 20,
       cursor: 'pointer',
       display: 'flex',
       flexDirection: 'column',
+      maxWidth: 1440,
+      margin: 'auto',
     },
     ask: {
       width: '100%',
@@ -53,9 +53,9 @@ const Question: FC<Tquestion> = ( props ) => {
     <div style={styles.wrapper} onClick={OnClick}>
       <div style={styles.ask}>
         <div style={styles.button}></div>
-        <p style={styles.p}>{props.ask}</p>
+        <p style={styles.p}>{ask}</p>
       </div>
-      {isActive && <p style={styles.answer}>{props.answer}</p>}
+      {isActive && <p style={styles.answer}>{answer}</p>}
     </div>
   );
 };

@@ -1,33 +1,22 @@
 import styled from 'styled-components';
 
-export const wrapper = styled.div`
-  padding-block: 0 48px;
-  padding-inline: 24px;
-  max-width: 1440px;
-  margin: auto;
-  width: 100%;
-`;
+export const wrapper = styled.div``;
 
-export const header = styled.div`
+export const headerContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   background: transparent;
   z-index: 0;
   position: relative;
+  max-width: 1440px;
+  margin: auto;
+  padding-inline: 32px;
+`;
 
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200vw;
-    height: calc(100% + 48px);
-    background: #d9e5ff;
-    z-index: -1;
-    transform: translateX(-25%);
-  }
+export const header = styled.div`
+  background: #d9e5ff;
 `;
 
 export const faqName = styled.div`
